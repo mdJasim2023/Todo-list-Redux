@@ -3,28 +3,27 @@ import React from "react";
 import './App.css'
 import { Link } from "react-router-dom";
 function AddCarts(props){
-    const handleInc = ()=>{
-        props.dispatch({type:'Inc'})
-    }
     return(
         <div className="m-5">
              <h1>Shopping Cart ( {props.cart.length} )</h1>
              <hr />
-            <div className="w-70 p-5 d-flex flex-wrap justify-content-between">
+            <div className="w-70 p-5 d-flex justify-content-between">
                     <div>
                         {
                             props.cart.map((cartItems,i)=>{
+                                console.log(cartItems);
                                 return(
                                     <>
-                                        <div className="w-75 p-3">
+                                        <div className="p-3">
                                             <img src={cartItems.image} width='80px' alt="" />
                                             <h4>{cartItems.title}</h4>
                                             <b>Price :  ${cartItems.price}</b><br /><br />
-                                            <button className="btn btn-danger" onClick={()=>{props.dispatch({type:'Dec'})}}>-</button>
-                                                <span><b> {props.count} </b></span>
-                                            <button className="btn btn-success" onClick={()=>{handleInc()}}>+</button>
+                                            <span><b>Quantity : </b></span>
+                                            <button className="btn btn-danger" onClick={()=>{props.dispatch({type:'Dec',payload:i})}}>-</button>
+                                                <span><b> {cartItems.Cartcount} </b></span>
+                                            <button className="btn btn-success" onClick={()=>{props.dispatch({type:'Inc',payload:i})}}>+</button>
                                         </div>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;<button className="btn btn-danger" onClick={()=>{props.dispatch({type:'Delete',index:i})}}>Delete</button>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<button className="btn btn-danger" onClick={()=>{props.dispatch({type:'Delete',index:i,payload:cartItems})}}>Delete</button>
                                         &nbsp;&nbsp;&nbsp;&nbsp;<button className="btn btn-info">Save Later</button>
                                         <hr />
                                     </>
