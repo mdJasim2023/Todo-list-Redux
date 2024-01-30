@@ -23,9 +23,9 @@ function AddCarts(props){
                                             <button className="btn btn-danger" onClick={()=>{props.dispatch({type:'Dec'})}}>-</button>
                                                 <span><b> {props.count} </b></span>
                                             <button className="btn btn-success" onClick={()=>{handleInc()}}>+</button>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button className="btn btn-danger" onClick={()=>{props.dispatch({type:'Delete',index:i})}}>Delete</button>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;<button className="btn btn-info">Save Later</button>
                                         </div>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<button className="btn btn-danger" onClick={()=>{props.dispatch({type:'Delete',index:i})}}>Delete</button>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<button className="btn btn-info">Save Later</button>
                                         <hr />
                                     </>
                                 )
