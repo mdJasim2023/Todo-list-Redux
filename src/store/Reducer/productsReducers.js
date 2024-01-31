@@ -5,7 +5,7 @@ let initialState = {
     searchedproducts:products,
     cart:[],
     bill:0,
-    addCart:false,
+    count:1
 }
 const productReducer = (state=initialState,action)=>{
     if(action.type==='ADDCART'){
@@ -13,8 +13,7 @@ const productReducer = (state=initialState,action)=>{
         temp=temp.map((a)=>{
             if(a.title===action.payload.title)
             {
-                a.inCart=true
-                a.Cartcount=1
+                a.inCart=true;
                 return a
             }
             else
@@ -26,7 +25,7 @@ const productReducer = (state=initialState,action)=>{
         var temp = [...state.allproducts]
         temp=temp.filter((a)=>{
             return (
-                a.title.includes(action.payload)
+                a.title.toLowerCase().includes(action.payload.toLowerCase())
             )
         })
         return {...state,searchedproducts:[...temp]}
@@ -49,15 +48,18 @@ const productReducer = (state=initialState,action)=>{
     }
 
     if(action.type==='Inc'){
-        let temp=[...state.cart]
-        ++temp[action.payload].Cartcount
-        return {...state,bill:+(state.bill)+(+(action.payload.price)*+(temp[action.payload].Cartcount)),cart:[...temp]}
+        
+        return {...state,count:state.count+1,bill:+(state.bill)+(action.payload.price)}
     }
     if(action.type==='Dec'){
-        let temp=[...state.cart]
-        --temp[action.payload].Cartcount
-        return {...state,bill:+(state.bill)-(action.payload.price*temp[action.payload].Cartcount),cart:[...temp]}
+
+        return {...state,count:state.count-1,bill:(state.bill)-(action.payload.price)}
     }
+
+    if(action.type==='saveLater'){
+        return {...state,saveLater:state.saveLater=true}
+    }
+
     return state
 }
 

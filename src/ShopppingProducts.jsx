@@ -4,10 +4,10 @@ import './App.css'
 import { Link } from "react-router-dom";
 
 function ShoppingProducts(props){
-    console.log(props);
+    
     let [srch,setSrch] = React.useState('')
     return(
-            <div>   
+            <div className="body">   
                 <h1 className="text-center text-warning">MY-CART</h1>
                 <div className="m-3 d-flex">
                     <input type="text" className="form-control w-50 d-flex align-self-center justify-content-around position-sticky top-0" placeholder="Search Products" onChange={(e)=>{props.dispatch({type:'Search',payload:e.target.value})}}/>
@@ -17,19 +17,18 @@ function ShoppingProducts(props){
                 {
                     props.searchedproducts.map((data,i)=>{
                         return (
-                            <div className="border p-2 rounded" id="main">
-                                <div className="">
-                                    <img src={data.image} alt="" width='50%' />
+                            <div className="border p-3 rounded" id="main">
+                                <div>
+                                    <img src={data.image} alt="" width='25%' />
                                 </div>
                                 <div className="m-2">
-                                    <h4>{data.title}</h4><br />
-                                    <b>Category : {data.category}</b><br /><br />
+                                    <h6><b className="text-primary">{data.title}</b></h6>
+                                    <b>Category : {data.category}</b><br />
                                     <span className="btn btn-success">{data.rating.rate} Rating</span>&nbsp;&nbsp;&nbsp;
                                     <span>{data.rating.count} Reviews</span><br />
                                     <b>Description</b>
-                                    <p>{data.description.slice(0,150)}</p>
-                                    <h1>${data.price}</h1>
-                                    
+                                    <div>{data.description.slice(0,100)}</div>
+                                    <h4><b className="text-success"> &#8377; {data.price}</b></h4>
                                     <button className="btn btn-warning" id="addbtns" disabled={data.inCart}   onClick={()=>{props.dispatch({type:'ADDCART',payload:data,index:i})}}>Add To Cart</button>
                                 </div>
                             </div>
