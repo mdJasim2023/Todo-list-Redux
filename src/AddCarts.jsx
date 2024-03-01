@@ -3,33 +3,6 @@ import React from "react";
 import './App.css'
 import { Link } from "react-router-dom";
 function AddCarts(props){
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
     let Bill = props.cart.reduce((a,b)=>{
         return a+(b.price*b.count)
     },0)
