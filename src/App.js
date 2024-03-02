@@ -1,12 +1,12 @@
 import './App.css';
 import RegisterForm from './RegisterForm';
 import Data from './Data';
+import { Outlet } from 'react-router';
 
 function App() {
   return (
-    <div className="">
-        <RegisterForm></RegisterForm>
-        <Data></Data>
+    <div>
+        <Outlet></Outlet>
     </div>
   );
 }

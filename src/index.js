@@ -6,10 +6,34 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import Data from './Data';
+import RegisterForm from './RegisterForm';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App></App>,
+    children:[
+      {
+        path:'/',
+        element:<RegisterForm></RegisterForm>
+      },
+      {
+      path:'/data',
+      element:<Data></Data>
+    }
+  ]
+  },
+]);
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
  <Provider store={store}>
-    <App />
+    <RouterProvider router={router} />
   </Provider>
 );
 

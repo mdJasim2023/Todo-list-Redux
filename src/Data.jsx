@@ -4,15 +4,15 @@ import React from "react";
 function Data(props){
     console.log(props.cart);
     return(
-        <div>
+        <div className="ddd">
             {
                 props.cart?.map((data)=>{
                     return(
-                        <div>
-                            <h1>Username : {data.username}</h1>
-                            <h1>Password : {data.password}</h1>
-                            <h1>Mobile Number : {data.mobile}</h1>
-                            <h1>Email : {data.email}</h1>
+                        <div className="data">
+                            <h4><b>Username</b> : {data.username}</h4>
+                            <h4><b>Password </b>: {data.password}</h4>
+                            <h4><b>Mobile Number</b> : {data.mobile}</h4>
+                            <h4><b>Email </b>: {data.email}</h4>
                         </div>
                     )
                 })
