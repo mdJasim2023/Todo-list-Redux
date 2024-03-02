@@ -11,7 +11,7 @@ function ShoppingProducts(props){
                 <h1 id="header" className="text-center position-sticky">MY-CART</h1>
                 <div className="m-3 d-flex">
                     <input type="text" className="form-control w-50 d-flex align-self-center justify-content-around position-sticky top-0" placeholder="Search Products" onChange={(e)=>{props.dispatch({type:'Search',payload:e.target.value})}}/>
-                    <Link to='./addcart'><h3 class="bi bi-cart position-relative"><p id="cartlogo" className="w-75 text-center position-absolute top-0 start-100 translate-middle  rounded-circle">{props.cart.length}</p></h3></Link>
+                    <Link to='./addcart'><h3 className="bi bi-cart position-relative"><p id="cartlogo" className="w-75 text-center position-absolute top-0 start-100 translate-middle  rounded-circle">{props.cart.length}</p></h3></Link>
                 </div>
                 <div className="d-flex flex-wrap m-5">
                 {
