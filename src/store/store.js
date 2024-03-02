@@ -1,7 +1,6 @@
-import { createStore } from "redux";
 
+import {createStore } from "redux";
+import registerReducer from "./Reducers/registerReducer";
+export let store = createStore(registerReducer)
 
-
-export let store = createStore({
-
-})
+export default store
